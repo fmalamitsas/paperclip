@@ -80,7 +80,8 @@ module Paperclip
           end
           AWS::S3::Base.establish_connection!( @s3_options.merge(
             :access_key_id => @s3_credentials[:access_key_id],
-            :secret_access_key => @s3_credentials[:secret_access_key]
+            :secret_access_key => @s3_credentials[:secret_access_key],
+            :server => "#{@bucket}.s3.amazonaws.com"
           ))
         end
         Paperclip.interpolates(:s3_alias_url) do |attachment, style|
